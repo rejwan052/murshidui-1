@@ -1,0 +1,19 @@
+<ng-container>
+  <br/>
+  <app-pager></app-pager>
+  <br/>
+  <div class="cover" role="region">
+    <div *ngFor="let songSelector of songSelectors ; let i=index">
+      <app-song-selector-item
+        [songSelectorItem]="songSelector"
+        [selectorIndex]="i">
+      </app-song-selector-item>
+    </div>
+  </div>
+  <br/>
+  <br/>
+  <app-pager></app-pager>
+
+  <br/>
+
+</ng-container>

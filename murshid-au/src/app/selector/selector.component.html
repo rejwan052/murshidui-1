@@ -1,0 +1,21 @@
+<div class="selector-main-container">
+  <div class="magnifier-container">
+    <mat-icon>search</mat-icon>
+  </div>
+  <div class="example-full-width" style="order: 2">
+    <input type="text" class="search-input" aria-label="Search Word"  [formControl]="myControl" [matAutocomplete]="auto"   id="searchInputText">
+<!--    <div class="label-search-type" (click)="simulateSearchTypeClick()"><span>{{obtainSelectedViewValue()}}</span></div>-->
+    <mat-select [(ngModel)]="selectedSearchTypeValue" name="searchType" id="searchSelectType" (selectionChange)="searchTypeSelected()" panelClass="selection-type-list">
+      <mat-option *ngFor="let searchType of searchTypes" [value]="searchType.value">
+        {{searchType.viewValue}}
+      </mat-option>
+    </mat-select>
+
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)='somethingSelected($event.option.value)' (keydown.enter)="onKeydown($event)">
+      <mat-option *ngFor="let option of filteredOptions$ | async" [value]="option">
+        {{option.title}}
+      </mat-option>
+    </mat-autocomplete>
+  </div>
+
+</div>

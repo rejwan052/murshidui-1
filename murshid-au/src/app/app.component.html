@@ -1,0 +1,16 @@
+<app-main-nav class="app">
+  <app-loading></app-loading>
+  <app-messages></app-messages>
+
+  <app-selector *ngIf="isHandset$ | async"></app-selector>
+
+
+
+
+  <!--  <div class="app-container" id="appContainer">-->
+  <router-outlet></router-outlet>
+  <!--  </div>-->
+
+
+
+</app-main-nav>

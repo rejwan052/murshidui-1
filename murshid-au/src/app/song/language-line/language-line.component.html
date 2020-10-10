@@ -1,0 +1,45 @@
+<div class="paragraph-block">
+  <div (click)="toggleVisibilityLanguagePanel($event)" [ngClass]="languageParagraphClass" dir="{{languageParagraphDir}}" >
+
+
+    <div *ngIf="block.minutes!=null || block.seconds!=null" class="time-indication"
+         dir="ltr">
+                              <span class="time-indication-number">{{("00" + block.minutes).slice(-2)}}
+                                :{{("00" + block.seconds).slice(-2)}}</span>
+      <mat-icon alt="Play" (click)="timeClicked()">play_circle_outline</mat-icon>
+      <mat-icon alt="Pause" (click)="pauseClicked()">pause_circle_outline</mat-icon>
+    </div>
+
+    <div *ngFor="let line of block.languageParagraph" class="paragraph-line">
+
+      <ng-container *ngFor="let wordSpan of line">
+          <span *ngIf="wordSpan.ltrBlock" dir="ltr">
+              <span *ngFor="let ltrWord of wordSpan.words" >
+                <span *ngIf="ltrWord.irrelevant" class="irrelevant">{{ltrWord.content}}</span>
+                <span *ngIf="ltrWord.punctuation" class="{{languagePunctuationClass}}">{{ltrWord.content}}</span>
+                <span *ngIf="ltrWord.space">&nbsp;</span>
+              </span>
+          </span>
+        <span *ngIf="!wordSpan.ltrBlock">
+              <br *ngIf="wordSpan.break">
+              <span *ngIf="wordSpan.irrelevant" class="irrelevant">{{wordSpan.content}}</span>
+              <span *ngIf="wordSpan.relevant"  [ngClass]="(this.useNastaliqService.useNastaliqChange | async) && isUrdu  ? ['relevant', 'nastaliq'] : 'relevant'"
+                    id="{{ wordSpan.index}}" (click)="wordClicked(wordSpan.index)">{{wordSpan.content}}</span>
+              <span *ngIf="wordSpan.punctuation"
+                    class="{{languagePunctuationClass}}">{{wordSpan.content}}</span>
+              <span *ngIf="wordSpan.space">&nbsp;</span>
+          </span>
+      </ng-container>
+
+    </div>
+
+  </div>
+
+  <div class="english-paragraph" (click)="toggleVisibilityLanguagePanel($event)">
+    <div *ngIf="block.minutes!=null || block.seconds!=null" class="time-indication-filler"></div>
+    <div *ngFor="let line of block.translationParagraph" class="paragraph-line">
+      {{line}}
+    </div>
+  </div>
+
+</div>

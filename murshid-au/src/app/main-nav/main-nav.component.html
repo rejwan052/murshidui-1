@@ -1,0 +1,70 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [ngClass]="{hidden: (isHandset$ | async) === false}"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Hindustani Songs</mat-toolbar>
+    <mat-nav-list>
+      <mat-list-item>
+        <button mat-button (click)="homeSelected(); drawer.toggle()">
+          <mat-icon>home</mat-icon>
+          Home
+        </button>
+      </mat-list-item>
+      <mat-list-item  *ngIf="globals.section == 'Cover'">
+        <mat-menu #orderSongsBy="matMenu">
+          <button mat-menu-item (click)="orderSongsBySelected('release'); drawer.toggle()">Release Date</button>
+          <button mat-menu-item (click)="orderSongsBySelected('post'); drawer.toggle()">Recently Posted</button>
+          <button mat-menu-item (click)="orderSongsBySelected('alpha'); drawer.toggle()">Alphabetical</button>
+        </mat-menu>
+        <button mat-button [matMenuTriggerFor]="orderSongsBy">Sort by</button>
+      </mat-list-item>
+      <mat-list-item  *ngIf="globals.section === 'Song'">
+
+        <app-script-selection (scriptSelect)="drawer.toggle()">
+        </app-script-selection>
+
+      </mat-list-item>
+
+      <mat-list-item  *ngIf="globals.section !== 'AllTags'">
+        <button mat-button="orderSongsBy" (click)="allTagsSelected(); drawer.toggle()">All Tags</button>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <!-- bar at the top -->
+    <mat-toolbar>
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <button mat-button  (click)="homeSelected()">
+        <img src="assets/icons/murshid_ico_36.png">
+        <span class="title">Hindustani Songs</span>
+      </button>
+
+      <app-selector *ngIf=" (isHandset$ | async) === false"></app-selector>
+
+      <span class="spacer"></span>
+      <span  *ngIf="globals.section === 'Cover' &&  (isHandset$ | async) === false">
+        <mat-menu #orderSongsBy="matMenu">
+          <button mat-menu-item (click)="orderSongsBySelected('release'); drawer.toggle()">Release Date</button>
+          <button mat-menu-item (click)="orderSongsBySelected('post'); drawer.toggle()">Recently Posted</button>
+          <button mat-menu-item (click)="orderSongsBySelected('alpha'); drawer.toggle()">Alphabetical</button>
+        </mat-menu>
+        <button mat-button [matMenuTriggerFor]="orderSongsBy">Sort by</button>
+      </span>
+      <app-script-selection *ngIf="globals.section === 'Song'" >
+      </app-script-selection>
+
+      <button mat-button="orderSongsBy"  *ngIf="globals.section !== 'AllTags' &&  (isHandset$ | async) === false" (click)="allTagsSelected(); drawer.toggle()">All Tags</button>
+
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

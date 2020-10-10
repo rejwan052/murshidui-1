@@ -1,0 +1,95 @@
+<ng-container xmlns="http://www.w3.org/1999/html">
+
+  <div class="not-found" *ngIf="searchWord === undefined">
+    No word specified
+  </div>
+
+  <div class="not-found" *ngIf="searchWord !== undefined &&  !thereAreDictionaryviews(dictionaryViews$ | async)">
+    The word <strong>{{this.searchWord}}</strong> was not found in the dictionary
+  </div>
+
+
+  <div class="entry-container" *ngIf="thereAreDictionaryviews(dictionaryViews$ | async)">
+    <br/>
+    <!-- hindi first, latin, urdu -->
+    <span *ngIf="scriptType=='Devanagari'">
+      <div  *ngFor="let entry of this.dictionaryViews$ | async">
+        <div class="headwords">
+          <span>{{entry.hindi}}</span>
+          <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+          <i>{{entry.latin}}</i>
+          <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+          <i>{{entry.urdu}}</i>
+        </div>
+        <div class="accidence">
+          {{entry.part_of_speech}} <span *ngIf="entry.accidence"> - {{entry.accidence}}</span>
+        </div>
+        <div class="meaning" [innerHtml]="entry.meaning"></div>
+        <br/>
+        <br/>
+      </div>
+    </span>
+
+
+    <!-- urdu first, latin, hindi -->
+    <span *ngIf="scriptType=='Nastaliq'">
+      <div  *ngFor="let entry of this.dictionaryViews$ | async">
+        <div class="headwords">
+          <span>{{entry.urdu}}</span>
+          <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+          <i>{{entry.latin}}</i>
+          <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+          <i>{{entry.hindi}}</i>
+        </div>
+        <div class ="accidence">
+          {{entry.part_of_speech}} <span *ngIf="entry.accidence"> - {{entry.accidence}}</span>
+        </div>
+        <div class="meaning" [innerHtml]="entry.meaning"></div>
+        <br/>
+        <br/>
+      </div>
+    </span>
+
+
+    <!-- latin first, hindi, urdu -->
+    <ng-container *ngIf="scriptType=='Latin'">
+      <div  *ngFor="let entry of this.dictionaryViews$ | async">
+        <div class="headwords">
+          <span>{{entry.latin}}</span>
+          <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+          <i>{{entry.hindi}}</i>
+          <span>&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+          <i>{{entry.urdu}}</i>
+        </div>
+        <div class="accidence">
+          {{entry.part_of_speech}} <span *ngIf="entry.accidence"> - {{entry.accidence}}</span>
+        </div>
+        <div class="meaning" [innerHtml]="entry.meaning"></div>
+        <br/>
+        <br/>
+      </div>
+    </ng-container>
+
+    <br/>
+    <br/>
+  </div>
+
+  <div  class="song-list-title" *ngIf="thereAreSongSelectors(this.songSelectors$ | async)">Songs containing the term <span class="term">{{this.searchWord}}</span></div>
+
+  <div class="song-container"  *ngIf="thereAreSongSelectors(this.songSelectors$ | async)">
+
+    <div *ngFor="let songSelector of this.songSelectors$ | async ; let i=index">
+      <app-song-selector-item
+        [songSelectorItem]="songSelector"
+        [selectorIndex]="i">
+      </app-song-selector-item>
+    </div>
+
+  </div>
+
+
+
+
+
+</ng-container>
+

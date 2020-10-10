@@ -1,0 +1,25 @@
+<ng-container>
+
+  <span *ngIf="pagination && pagination.pages.length > 1 ">
+    <div class="pager" role="region">
+      <div class="previousHolder">
+        <div *ngIf="pagination.hasPrevious" class="endRect"  (click)="pagerPreviousClicked($event)">
+          <mat-icon>keyboard_arrow_left</mat-icon>
+        </div>
+      </div>
+      <div *ngFor="let page of pagination.pages ; let i=index">
+        <div
+          [ngClass]="{pageRect: true,  'rectSelected':  shouldGrayPage(page)}"
+          (click)="pagerPageClicked(page)">
+             {{page}}
+        </div>
+      </div>
+      <div class="nextHolder">
+        <div *ngIf="pagination.hasNext" class="endRect" (click)="pagerNextClicked($event)">
+          <mat-icon>keyboard_arrow_right</mat-icon>
+        </div>
+      </div>
+    </div>
+  </span>
+
+</ng-container>

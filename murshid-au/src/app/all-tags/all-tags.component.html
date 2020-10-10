@@ -1,0 +1,11 @@
+<ng-container class="main-conainer">
+
+  <div class="tag-container" role="region">
+    <div *ngFor="let tag of tags$ | async ; let i=index">
+      <a routerLink="/tag/{{tag.key}}" routerLinkActive="active">
+        <div class="tag-item">{{tag.title}}&nbsp;<span class="tag-count">{{tag.count}}</span></div>
+      </a>
+    </div>
+  </div>
+
+</ng-container>

@@ -1,0 +1,8 @@
+<nav *ngIf="selectedScript$ | async as selectedScript">
+  <mat-menu #scripts="matMenu">
+    <button mat-menu-item (click)="transliterationSelected('हिन्दी')">हिन्दी</button>
+    <button mat-menu-item (click)="transliterationSelected('اُردو')">اُردو</button>
+    <button mat-menu-item (click)="transliterationSelected('Latin')">Latin</button>
+  </mat-menu>
+  <button mat-button [matMenuTriggerFor]="scripts">{{selectedScript}}</button>
+</nav>

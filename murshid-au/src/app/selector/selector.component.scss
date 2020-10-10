@@ -1,0 +1,190 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  //width: 50%;selector-main-container
+  width: 400px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  margin-top: 5px;
+  //border: 1px solid blue;
+
+
+}
+
+.selector-main-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  //border: 1px solid orange;
+  height: 40px;
+  align-items: center;
+
+}
+
+.selection-type-list.mat-select-panel {
+  max-height: 1000px;
+}
+
+mat-option {
+  height: 35px;
+  //padding-left: 2px;
+}
+
+.example-full-width input{
+  flex: 1 0 100%;
+}
+
+
+.search-input {
+  background-color: white;
+  border-color: lightgray lightgray lightgray white;
+  border-width: 1px 1px 1px 0;
+  border-radius: 0 3px 3px 0;
+  //font-size: large;
+  //box-sizing: border-box;
+  flex: 1 0 200px;
+  max-width: 200px;
+  height: 35px;
+}
+
+//.v-align-middle {
+//  vertical-align: middle;
+//}
+
+.magnifier-container{
+  margin-top: 5px;
+  border-color: darkgrey white lightgray lightgray;
+  border-width: 1px 0 1px 1px;
+  border-style: solid;
+  //border: 1px solid red;
+  //padding-left: 5px;
+  height: 36px;
+  background-color: white;
+  //vertical-align: center;
+  display: flex;
+  flex-flow: column wrap;
+  align-content: flex-end;
+  //align-items: center;
+  //justify-items: center;
+  padding-top: 1px;
+
+  //padding-top: 7px;
+}
+
+.magnifier-container .mat-icon{
+  width: 32px;
+  padding-top: 3px;
+  height: 30px;
+}
+
+mat-select{
+  padding-left: 7px;
+
+  width: 30px;
+  max-width: 100px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  padding-top: 1px;
+
+}
+
+.search-button {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  background-color: #d9d9d9;
+  border-radius: 5px;
+  border: 1px solid darkgrey;
+  padding: 5px;
+  min-width: 47px;
+  width: 47px;
+  height: 47px;
+  margin-left: 3px;
+  //margin-top: 1px;
+}
+
+.label-search-type {
+  margin-left: 5px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  border-radius: 5px 0 0 5px;
+  padding: 5px;
+  cursor: pointer;
+  flex: 0 1 70px;
+  min-width: 70px;
+}
+
+/*** To change the arrow color ****/
+//.mat-select-arrow {
+//  border-top: 5px solid rgb(10, 73, 99);
+//}
+
+.mat-select-trigger{
+  //width: 0;
+  //border: 1px dotted orange;
+  //height: 20px;
+  //flex: 0 1 35px;
+  height: 100%;
+  //vertical-align: center;
+  //display: flex;
+  //flex-flow: column nowrap;
+  //justify-content: center;
+  //align-content: center;
+
+  //height: 20px;
+  //min-height: 20px;
+  //max-height: 35px;
+}
+
+
+/** https://stackoverflow.com/questions/51445514/change-mat-select-arrow-icon **/
+.mat-select-arrow-wrapper {
+  //background-color: #d9d9d9;
+  display: flex;
+  flex-flow: column nowrap;
+  align-content: center;
+  //border: 1px solid green;
+  //align-content: flex-start;
+
+  //border-right: 1px solid darkgrey;
+  //border-top: 1px solid darkgrey;
+  //border-bottom: 1px solid darkgrey;
+  //  color: rgb(87, 87, 87);
+}
+
+
+.mat-select-value{
+  //border: 1px solid cyan;
+  //display: flex;
+  //flex-flow: column nowrap;
+  //justify-content: flex-start;
+  //height: 20px;
+  //vertical-align: center;
+  //text-align: center;
+  //padding-top: 4px;
+  min-width: 60px;
+}
+
+
+.mat-select-value-text {
+  color: rgba(0,0,0,.88);
+  //color: red;
+  font-size: small;
+  //display: flex;
+  //flex-flow: column nowrap;
+  //justify-content: center;
+  flex: 1 0 20px;
+  height: 20px;
+  //min-height: 20px;
+}
+

@@ -1,0 +1,6 @@
+<div class="tag-container">
+  <a *ngFor="let tag of (tags )" routerLink="/tag/{{tag.key}}" routerLinkActive="active">
+    <div  class="tag-item" (mouseover)="changeTagItemStyle($event)"
+          (mouseout)="changeTagItemStyle($event)" (click)="changeTagItemStyle($event)">{{tag.title}}</div>
+  </a>
+</div>

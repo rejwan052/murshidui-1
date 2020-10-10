@@ -1,0 +1,23 @@
+.cover{
+  display: flex;
+  order: 0;
+  width: 100%;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.tag-text{
+  text-align: center;
+}
+
+.tag-title{
+  font-size: large;
+  font-weight: bold;
+  text-align: center;
+}
+
+.not-found {
+  padding: 10px;
+  text-align: center;
+  line-height: 150%;
+}

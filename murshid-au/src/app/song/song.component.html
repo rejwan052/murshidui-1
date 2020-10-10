@@ -1,0 +1,52 @@
+<ng-container>
+  <div id="song-container-main" class="songcontainer-main" (scroll)="onWindowScroll();">
+    <header>{{bollyName$ | async}}</header>
+    <div style="display: flex; flex-flow: column nowrap; align-items: center; width: 100%">
+
+      <app-tags-list [tags]="tags$ | async"></app-tags-list>
+
+      <div *ngIf="isBrowser && (videoUrl$ | async) as videoUrl" >
+        <youtube-player
+          [videoId]="videoUrl"
+          (ready)="savePlayer($event, videoUrl)"
+          (change)="onStateChange($event)">
+        </youtube-player>
+      </div>
+    </div>
+    <br>
+    <div class="nastaliq-calligraphy-container">
+            <span>
+                <mat-checkbox title="Use Nastaliq Calligraphy" *ngIf="(transliteration$ | async) === 'Urdu'"
+                              (change)="toggleNastaliq($event)" [checked]="(this.useNastaliqService.useNastaliqChange | async)">Nastaʿlīq Calligraphy</mat-checkbox>
+            </span>
+    </div>
+    <div class="dictionary-use-hint">Click on each word to display its meaning</div>
+    <br/>
+    <div *ngIf="lessThan100Width()" class="dictionary-use-hint">Click on any paragraph's background to display an English translation</div>
+    <br/>
+    <div id="song-container-text" class="song-container-text" *ngIf="songModel$ | async as songModel">
+
+      <app-language-line *ngFor="let block of songModel.paragraphBlocks" style="display: flex; flex-flow: row nowrap; width: 100%"
+                         (timeClick)="timeClicked($event, songModel.videoUrl)"
+                         (pauseClick)="pauseClicked()"
+                         (wordClick)="wordClicked($event)"
+                         [block]="block"
+                         [languagePunctuationClass]="languagePunctuationClass$ | async"
+                         [languageParagraphClass]="languageParagraphClass$ | async"
+                         [languageParagraphDir]="languageParagraphDir$ | async"
+                         [isUrdu]="songModel.transliteration === 'Urdu'"
+      >
+      </app-language-line>
+
+    </div>
+    <br/>
+    <div class="description" [innerHtml]="description$ | async"></div>
+  </div>
+  <br/>
+  <div class="plain-text-redirect" *ngIf="plainTextLink$ | async as plainTextLink">
+    <div>Click here for a <a routerLink="{{plainTextLink}}" routerLinkActive="active">plain text</a> version of the song</div>
+    <br/>
+    <button (click)="navigateToPlain(plainTextLink)">Plain Text</button>
+  </div>
+
+</ng-container>

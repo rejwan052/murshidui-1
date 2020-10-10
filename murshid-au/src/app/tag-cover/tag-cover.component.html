@@ -1,0 +1,32 @@
+<ng-container>
+  <br/>
+  <ng-container *ngIf="tag$ | async as tag">
+    <div  class="tag-title">{{tag.title}}</div>
+    <br/>
+    <div class="tag-text"><span>{{tag.description}}</span></div>
+  </ng-container>
+
+  <ng-container *ngIf="!(tag$ | async)">
+    <div class="not-found">
+      The tag <strong>{{this.tagKey}}</strong> was not found
+    </div>
+
+  </ng-container>
+
+  <app-pager></app-pager>
+
+  <div class="cover" role="region">
+    <div *ngFor="let songSelector of songSelectors ; let i=index">
+      <app-song-selector-item
+        [songSelectorItem]="songSelector"
+        [selectorIndex]="i">
+      </app-song-selector-item>
+    </div>
+  </div>
+  <br/>
+  <br/>
+
+  <app-pager></app-pager>
+  <br/>
+
+</ng-container>
