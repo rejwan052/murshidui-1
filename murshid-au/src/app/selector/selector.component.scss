@@ -11,7 +11,6 @@
   flex-flow: row nowrap;
   align-items: stretch;
   justify-content: flex-start;
-  margin-top: 5px;
   //border: 1px solid blue;
 
 
@@ -23,7 +22,6 @@
   justify-content: flex-start;
   //border: 1px solid orange;
   height: 40px;
-  align-items: center;
 
 }
 
@@ -36,62 +34,54 @@ mat-option {
   //padding-left: 2px;
 }
 
-.example-full-width input{
+.example-full-width input {
   flex: 1 0 100%;
 }
 
 
 .search-input {
   background-color: white;
-  border-color: lightgray lightgray lightgray white;
-  border-width: 1px 1px 1px 0;
   border-radius: 0 3px 3px 0;
   //font-size: large;
   //box-sizing: border-box;
   flex: 1 0 200px;
   max-width: 200px;
   height: 35px;
+  border: 1px solid #ddd;
+  border-left-color: transparent !important;
+  border-left: 0;
 }
 
 //.v-align-middle {
 //  vertical-align: middle;
 //}
 
-.magnifier-container{
-  margin-top: 5px;
-  border-color: darkgrey white lightgray lightgray;
-  border-width: 1px 0 1px 1px;
-  border-style: solid;
-  //border: 1px solid red;
-  //padding-left: 5px;
+.magnifier-container {
   height: 36px;
   background-color: white;
-  //vertical-align: center;
   display: flex;
   flex-flow: column wrap;
   align-content: flex-end;
-  //align-items: center;
-  //justify-items: center;
   padding-top: 1px;
-
-  //padding-top: 7px;
+  border: 1px solid #ddd;
+  border-radius: 3px 0 0 3px;
+  margin-right: -1px;
 }
 
-.magnifier-container .mat-icon{
+.magnifier-container .mat-icon {
   width: 32px;
-  padding-top: 3px;
+  padding-top: 5px;
   height: 30px;
+  padding-left: 5px;
 }
 
-mat-select{
+mat-select {
   padding-left: 7px;
-
   width: 30px;
   max-width: 100px;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  padding-top: 1px;
 
 }
 
@@ -129,62 +119,72 @@ mat-select{
 //  border-top: 5px solid rgb(10, 73, 99);
 //}
 
-.mat-select-trigger{
-  //width: 0;
-  //border: 1px dotted orange;
-  //height: 20px;
-  //flex: 0 1 35px;
+.mat-select-trigger {
   height: 100%;
-  //vertical-align: center;
-  //display: flex;
-  //flex-flow: column nowrap;
-  //justify-content: center;
-  //align-content: center;
-
-  //height: 20px;
-  //min-height: 20px;
-  //max-height: 35px;
 }
 
 
 /** https://stackoverflow.com/questions/51445514/change-mat-select-arrow-icon **/
 .mat-select-arrow-wrapper {
-  //background-color: #d9d9d9;
   display: flex;
   flex-flow: column nowrap;
   align-content: center;
-  //border: 1px solid green;
-  //align-content: flex-start;
-
-  //border-right: 1px solid darkgrey;
-  //border-top: 1px solid darkgrey;
-  //border-bottom: 1px solid darkgrey;
-  //  color: rgb(87, 87, 87);
 }
 
-
-.mat-select-value{
-  //border: 1px solid cyan;
-  //display: flex;
-  //flex-flow: column nowrap;
-  //justify-content: flex-start;
-  //height: 20px;
-  //vertical-align: center;
-  //text-align: center;
-  //padding-top: 4px;
+.mat-select-value {
   min-width: 60px;
+  max-width: 0;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 35px;
+  display: inline-block;
+  text-align: center;
 }
-
 
 .mat-select-value-text {
-  color: rgba(0,0,0,.88);
-  //color: red;
-  font-size: small;
-  //display: flex;
-  //flex-flow: column nowrap;
-  //justify-content: center;
+  color: rgba(0, 0, 0, .88);
   flex: 1 0 20px;
-  height: 20px;
-  //min-height: 20px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+input#searchInputText:focus {
+  outline: 0;
+}
+
+div#searchSelectType-panel {
+  font-size: 14px !important;
+  transform: none !important;
+}
+
+@media (min-width: 742px) and (max-width: 900px) {
+  .mat-select-value-text {
+    display: inline-block;
+    height: 35px;
+    line-height: 38px;
+  }
+}
+
+@media (min-width: 742px) and (max-width: 900px) {
+  /*app-selector.ng-star-inserted {
+    position: relative;
+    top: -60px;
+    left: 125px;
+  }*/
+  .mat-select-value-text {
+    display: inline-block;
+    height: 35px;
+    line-height: 38px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .mat-select-value-text {
+    display: inline-block;
+    height: 35px;
+    line-height: 38px;
+  }
 }
 

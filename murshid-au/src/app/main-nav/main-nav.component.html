@@ -35,23 +35,26 @@
   <mat-sidenav-content>
     <!-- bar at the top -->
     <mat-toolbar>
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <button mat-button  (click)="homeSelected()">
-        <img src="assets/icons/murshid_ico_36.png">
-        <span class="title">Hindustani Songs</span>
-      </button>
 
-      <app-selector *ngIf=" (isHandset$ | async) === false"></app-selector>
+        <button
+                type="button"
+                aria-label="Toggle sidenav"
+                mat-icon-button
+                (click)="drawer.toggle()"
+                *ngIf="isHandset$ | async">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <button mat-button  (click)="homeSelected()">
+          <img src="assets/icons/murshid_ico_36.png">
+          <span class="title">Hindustani Songs</span>
+        </button>
 
-      <span class="spacer"></span>
-      <span  *ngIf="globals.section === 'Cover' &&  (isHandset$ | async) === false">
+        <app-selector *ngIf=" (isHandset$ | async) === false"></app-selector>
+
+
+      <!--<span class="spacer"></span>-->
+      <div class="align-right">
+        <span  *ngIf="globals.section === 'Cover' &&  (isHandset$ | async) === false">
         <mat-menu #orderSongsBy="matMenu">
           <button mat-menu-item (click)="orderSongsBySelected('release'); drawer.toggle()">Release Date</button>
           <button mat-menu-item (click)="orderSongsBySelected('post'); drawer.toggle()">Recently Posted</button>
@@ -59,10 +62,11 @@
         </mat-menu>
         <button mat-button [matMenuTriggerFor]="orderSongsBy">Sort by</button>
       </span>
-      <app-script-selection *ngIf="globals.section === 'Song'" >
-      </app-script-selection>
+        <app-script-selection *ngIf="globals.section === 'Song'" >
+        </app-script-selection>
 
-      <button mat-button="orderSongsBy"  *ngIf="globals.section !== 'AllTags' &&  (isHandset$ | async) === false" (click)="allTagsSelected(); drawer.toggle()">All Tags</button>
+        <button mat-button="orderSongsBy"  *ngIf="globals.section !== 'AllTags' &&  (isHandset$ | async) === false" (click)="allTagsSelected(); drawer.toggle()">All Tags</button>
+      </div>
 
     </mat-toolbar>
     <ng-content></ng-content>

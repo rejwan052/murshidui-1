@@ -25,14 +25,18 @@
   z-index: 1;
 }
 
-app-selector{
-  width: 430px;
+.mat-toolbar-row, .mat-toolbar-single-row {
+  justify-content: left;
+  margin-bottom: 10px;
 }
 
+app-selector{
+  width: auto;
+  display: block;
+}
 
 @media (min-width:600px) and (max-width:900px) {
   .title {
     visibility: hidden;
   }
-
 }
